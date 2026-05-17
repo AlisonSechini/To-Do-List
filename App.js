@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, KeyboardAvoidingView, Platform, Pressable, ScrollView, LogBox, Animated,} from 'react-native';
+  StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, KeyboardAvoidingView, Platform, Pressable, ScrollView, LogBox, Animated, Keyboard} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialIcons } from '@expo/vector-icons';
 import Checkbox from 'expo-checkbox';
@@ -189,7 +189,10 @@ export default function App() {
 
             <TouchableOpacity
               style={styles.emojiSelectorButton}
-              onPress={() => setIsEmojiPickerOpen(!isEmojiPickerOpen)}
+              onPress={() => {
+                Keyboard.dismiss();
+                setIsEmojiPickerOpen(!isEmojiPickerOpen);
+              }}
               activeOpacity={0.7}
             >
               <Text style={styles.emojiSelectorText}>
